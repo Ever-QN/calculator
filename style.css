@@ -1,0 +1,24 @@
+.container {
+    border: 2px solid black;
+}
+
+.display {
+    display: flex;
+    border: 2px solid grey;
+    justify-content: flex-end;
+    
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid red;
+}
+
+button {
+    flex: 1 25%;
+}
+
+.digit {
+    flex-direction: row;
+}

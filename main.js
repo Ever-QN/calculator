@@ -23,9 +23,14 @@ function operate(operator, firstNumber, secondNumber) {
         case 'multiplication':
             return multiply(firstNumber, secondNumber);
         case 'division':
+            if (secondNumber === 0) {
+                return "Cannot divide by zero";
+            }
             return divide(firstNumber, secondNumber);
         default:
             return 'ERROR';
     }
 
 }
+
+console.log(operate('division', 6, 0))
