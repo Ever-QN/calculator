@@ -6,6 +6,7 @@ body {
     border: 5px solid rgb(49, 49, 49);
     margin: auto;
     max-width: 400px;
+    min-width: 400px;
     margin-top: 40px;
 }
 
@@ -30,12 +31,12 @@ body {
 }
 
 button {
-    flex: 1 25%;
+    flex: 1 0 25%;
     padding: 22px;
     color: white;
     background-color: rgb(18, 18, 18);
     border-color: rgb(25, 25, 25);
-    border-style: double;
+    border-radius: 8px;
     font-size: large;
 }
 
