@@ -3,17 +3,19 @@ body {
 }
 
 .container {
-    border: 2px solid rgb(90, 90, 90);
+    border: 2px solid rgb(49, 49, 49);
+    margin: auto;
+    max-width: 400px;
+    margin-top: 50px;
 }
 
 .display {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
     justify-content: center;
     align-items: flex-end;
     padding: 0.25em;
-    min-height: 50px;
+    min-height: 75px;
     font-size: larger;
     font-weight: bold;
     font-family: "Lucida Console", "Courier New", monospace;
@@ -23,15 +25,32 @@ body {
 .buttons {
     display: flex;
     flex-wrap: wrap;
-    /* border: 2px solid red; */
+    border: 2px solid rgb(59, 59, 59);
     flex-direction: row-reverse;
 }
 
 button {
     flex: 1 25%;
     padding: 20px;
+    color: white;
+    background-color: rgb(18, 18, 18);
+    border-color: rgb(25, 25, 25);
+    font-size: large;
+    
+}
+
+button:hover {
+    filter: brightness(150%);
+}
+
+.delete, .divide, .multiply, .subtract, .add {
+    color: orange;
+}
+
+.equals {
+    background-color: rgb(29, 84, 129);
 }
 
 .buttons .digit {
-    
+
 }
