@@ -33,4 +33,16 @@ function operate(operator, firstNumber, secondNumber) {
 
 }
 
-console.log(operate('division', 6, 0))
+let digitNodeList = document.querySelectorAll(".digit")
+
+let display = document.querySelector(".display");
+
+function displayNumber(number) {
+        number = display.textContent;
+        return number;
+}
+
+// digitNodeList.forEach((value) => {
+    
+
+// })
