@@ -3,10 +3,10 @@ body {
 }
 
 .container {
-    border: 2px solid rgb(49, 49, 49);
+    border: 5px solid rgb(49, 49, 49);
     margin: auto;
     max-width: 400px;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .display {
@@ -16,7 +16,7 @@ body {
     align-items: flex-end;
     padding: 0.25em;
     min-height: 75px;
-    font-size: larger;
+    font-size: xx-large;
     font-weight: bold;
     font-family: "Lucida Console", "Courier New", monospace;
     color: white;
@@ -25,18 +25,18 @@ body {
 .buttons {
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid rgb(59, 59, 59);
+    /* border: 2px solid rgb(59, 59, 59); */
     flex-direction: row-reverse;
 }
 
 button {
     flex: 1 25%;
-    padding: 20px;
+    padding: 22px;
     color: white;
     background-color: rgb(18, 18, 18);
     border-color: rgb(25, 25, 25);
+    border-style: double;
     font-size: large;
-    
 }
 
 button:hover {
@@ -45,10 +45,16 @@ button:hover {
 
 .delete, .divide, .multiply, .subtract, .add {
     color: orange;
+    background-color: rgb(20, 20, 20);
+}
+
+.percentage, .clear-input, .clear-everything, .inverse, .sqrt, .square {
+    color:green;
+    background-color: rgb(20, 20, 20);
 }
 
 .equals {
-    background-color: rgb(29, 84, 129);
+    background-color: rgb(20, 84, 129);
 }
 
 .buttons .digit {
