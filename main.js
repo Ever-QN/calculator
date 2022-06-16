@@ -34,13 +34,24 @@ function operate(operator, firstNumber, secondNumber) {
 }
 
 const digitBtns = document.querySelectorAll(".digit");
+const clearEverythingBtn = document.querySelector(".clear-everything");
+const clearInputBtn = document.querySelector(".clear-input");
 let display = document.querySelector(".display");
+
 
 let displayValue = 0;
 let clearedDisplay = true;
 
 function clearDisplayValue() {
-   return display.textContent = "";;
+    clearedDisplay = true;
+    return display.textContent = "0.0";
+}
+
+function clearButtons() {
+    clearEverythingBtn.addEventListener('click', () => {
+        displayValue = 0;
+    })
+    clearInputBtn.addEventListener('click', () => clearDisplayValue());
 }
 
 function digitPressed() {
@@ -48,7 +59,7 @@ function digitPressed() {
         digitBtns[i].addEventListener('click', () => {
             displayValue = display.textContent += digitBtns[i].textContent;
             if (clearedDisplay === true) {
-                clearDisplayValue();
+                display.textContent = "";
                 displayValue = display.textContent += digitBtns[i].textContent;
             }
             clearedDisplay = false;
@@ -57,4 +68,5 @@ function digitPressed() {
     }
 }
 
+clearButtons();
 digitPressed();
