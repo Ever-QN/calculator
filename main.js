@@ -50,7 +50,7 @@ let clearedDisplay = true;
 
 function clearDisplayValue() {
     clearedDisplay = true;
-    display.textContent = "0.0";
+    display.textContent = "0";
     return displayValue = display.textContent;
 }
 
@@ -62,7 +62,14 @@ function clearButtons() {
 }
 
 function removeLastInput() {
-
+    deleteBtn.addEventListener('click', () => {
+        if (display.textContent === '0') {
+            clearedDisplay = true;
+            return display.textContent = '0';
+        } else {
+            displayValue = display.textContent = display.textContent.slice(0, -1);
+        }
+    })
 }
 
 function digitPressed() {
@@ -82,6 +89,7 @@ function digitPressed() {
 
 
 function startCalculator() {
+    removeLastInput();
     clearButtons();
     digitPressed();
 }
