@@ -34,6 +34,12 @@ function operate(operator, firstNumber, secondNumber) {
 }
 
 const digitBtns = document.querySelectorAll(".digit");
+const divideBtn = document.querySelector(".divide");
+const multiplyBtn = document.querySelector(".multiply");
+const subtractBtn = document.querySelector(".subtract");
+const addBtn = document.querySelector(".add");
+const equalsBtn = document.querySelector(".equals");
+const deleteBtn = document.querySelector(".delete");
 const clearEverythingBtn = document.querySelector(".clear-everything");
 const clearInputBtn = document.querySelector(".clear-input");
 let display = document.querySelector(".display");
@@ -68,5 +74,11 @@ function digitPressed() {
     }
 }
 
-clearButtons();
-digitPressed();
+
+
+function startCalculator() {
+    clearButtons();
+    digitPressed();
+}
+
+startCalculator();
