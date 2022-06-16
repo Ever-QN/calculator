@@ -33,16 +33,28 @@ function operate(operator, firstNumber, secondNumber) {
 
 }
 
-let digitNodeList = document.querySelectorAll(".digit")
-
+const digitBtns = document.querySelectorAll(".digit");
 let display = document.querySelector(".display");
 
-function displayNumber(number) {
-        number = display.textContent;
-        return number;
+let displayValue = 0;
+let clearedDisplay = true;
+
+function clearDisplayValue() {
+   return display.textContent = "";;
 }
 
-// digitNodeList.forEach((value) => {
-    
+function digitPressed() {
+    for (let i = 0; i < digitBtns.length; i++) {
+        digitBtns[i].addEventListener('click', () => {
+            displayValue = display.textContent += digitBtns[i].textContent;
+            if (clearedDisplay === true) {
+                clearDisplayValue();
+                displayValue = display.textContent += digitBtns[i].textContent;
+            }
+            clearedDisplay = false;
+        })
+        
+    }
+}
 
-// })
+digitPressed();

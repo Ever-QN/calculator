@@ -36,7 +36,8 @@ button {
     color: white;
     background-color: rgb(18, 18, 18);
     border-color: rgb(25, 25, 25);
-    border-radius: 8px;
+    /* border-radius: 8px; */
+    border-style: double;
     font-size: large;
 }
 
