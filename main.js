@@ -45,12 +45,13 @@ const clearInputBtn = document.querySelector(".clear-input");
 let display = document.querySelector(".display");
 
 
-let displayValue = 0;
+let displayValue = display.textContent;
 let clearedDisplay = true;
 
 function clearDisplayValue() {
     clearedDisplay = true;
-    return display.textContent = "0.0";
+    display.textContent = "0.0";
+    return displayValue = display.textContent;
 }
 
 function clearButtons() {
@@ -58,6 +59,10 @@ function clearButtons() {
         displayValue = 0;
     })
     clearInputBtn.addEventListener('click', () => clearDisplayValue());
+}
+
+function removeLastInput() {
+
 }
 
 function digitPressed() {
