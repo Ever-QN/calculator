@@ -33,6 +33,7 @@ function operate(operator, firstNumber, secondNumber) {
 
 }
 
+const container = document.querySelector('.container');
 const digitBtns = document.querySelectorAll(".digit");
 const divideBtn = document.querySelector(".divide");
 const multiplyBtn = document.querySelector(".multiply");
@@ -97,18 +98,22 @@ function digitPressed() {
     }
 }
 
-function createElement(elementClassName, content) {
+function showInputHistory(elementClassName, content) {
     let element = document.createElement("div");
     element.classList.add(elementClassName);
+    element.classList.add('prevInput');
     let elementText = document.createTextNode(content);
-    element.append(elementText);
-    document.insertBefore(element, display);
-    
+    element.appendChild(elementText);
+    element.style.color = 'grey';
+    element.style.display = 'flex';
+    element.style.justifyContent = 'flex-end';
+    element.style.padding = '7px';
+    container.insertBefore(element, display);
 }
 
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
-        createElement("divisor", "hi test");
+        showInputHistory('divisor', 'hello world!');
     })
     multiplyBtn.addEventListener('click', () => {
 
