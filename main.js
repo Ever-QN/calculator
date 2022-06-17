@@ -84,6 +84,13 @@ function removeLastInput() {
     })
 }
 
+function digitSpaceCheck() {
+    if (display.textContent.length > 19) {
+        let slicedValue = display.textContent.slice(0, -1);
+        return displayValue = display.textContent = slicedValue;
+    }
+}
+
 function digitPressed() {
     for (let i = 0; i < digitBtns.length; i++) {
         digitBtns[i].addEventListener('click', () => {
@@ -93,10 +100,7 @@ function digitPressed() {
                 displayValue = display.textContent += digitBtns[i].textContent;
             }
             clearedDisplay = false;
-            if (display.textContent.length > 19) {
-                let slicedValue = display.textContent.slice(0, -1);
-                return displayValue = display.textContent = slicedValue;
-            }
+            digitSpaceCheck();
         })
         
     }
@@ -119,26 +123,41 @@ let firstInput;
 let secondInput;
 let result;
 let storedOperation;
+let equationBeingProcessed = false;
 
-// function processEquation () {
-//         if (firstInput === undefined && secondInput === undefined) {
-//             firstInput = displayValue;
-//             clearDisplayValue();
-//         } else if (firstInput != undefined && secondInput === undefined) {
-//             secondInput = displayValue;
-//             result = display.textContent = operate(storedOperation, firstInput, secondInput);
-//             displayValue = result;
-//             firstInput = result;
-//             clearedDisplay = true; // Technically cleared, new input allows for ease of access for inputs, replaces previous number instead of adding on to the next string
-//             secondInput = undefined;
-//         } else {
-//             return 0;
-//         }
-// }
+function processEquation () {
+    
+    equationBeingProcessed = true;
+        if (firstInput === undefined) {
+            firstInput = displayValue;
+            clearDisplayValue();
+        } else if (firstInput != undefined && secondInput === undefined) {
+            secondInput = displayValue;
+            result = display.textContent = operate(storedOperation, firstInput, secondInput);
+            displayValue = result;
+            firstInput = result;
+            clearedDisplay = true; // Technically cleared, new input allows for ease of access for inputs, replaces previous number instead of adding on to the next string
+        } else if (firstInput != undefined && secondInput != undefined && firstInput === displayValue) {
+            result = display.textContent = operate(storedOperation, displayValue, secondInput);
+            displayValue = result;
+            firstInput = result;
+            clearedDisplay = true
+        } else {
+            secondInput = displayValue;
+            result = display.textContent = operate(storedOperation, firstInput, secondInput);
+            displayValue = result;
+            firstInput = result;
+            clearedDisplay = true; // Technically cleared, new input allows for ease of access for inputs, replaces previous number instead of adding on to the next string
+        }
+        
+}
 
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        if (equationBeingProcessed === true) {
+            return false;
+        }
         storedOperation = 'division';
         processEquation();
     })
