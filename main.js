@@ -93,6 +93,10 @@ function digitPressed() {
                 displayValue = display.textContent += digitBtns[i].textContent;
             }
             clearedDisplay = false;
+            if (display.textContent.length > 19) {
+                let slicedValue = display.textContent.slice(0, -1);
+                return displayValue = display.textContent = slicedValue;
+            }
         })
         
     }
@@ -111,21 +115,50 @@ function showInputHistory(elementClassName, content) {
     container.insertBefore(element, display);
 }
 
+let firstInput;
+let secondInput;
+let result;
+let storedOperation;
+
+// function processEquation () {
+//         if (firstInput === undefined && secondInput === undefined) {
+//             firstInput = displayValue;
+//             clearDisplayValue();
+//         } else if (firstInput != undefined && secondInput === undefined) {
+//             secondInput = displayValue;
+//             result = display.textContent = operate(storedOperation, firstInput, secondInput);
+//             displayValue = result;
+//             firstInput = result;
+//             clearedDisplay = true; // Technically cleared, new input allows for ease of access for inputs, replaces previous number instead of adding on to the next string
+//             secondInput = undefined;
+//         } else {
+//             return 0;
+//         }
+// }
+
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
-        showInputHistory('divisor', 'hello world!');
+        // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'division';
+        processEquation();
     })
     multiplyBtn.addEventListener('click', () => {
-
+        // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'multiplication';
     })
     subtractBtn.addEventListener('click', () => {
-
+        // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'subtraction';
     })
     addBtn.addEventListener('click', () => {
-
+        // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'addition';
+    })
+    equalsBtn.addEventListener('click', () => {
+        // showInputHistory('divisor', 'hello world!');
+        processEquation();
     })
 }
-
 
 
 function startCalculator() {
