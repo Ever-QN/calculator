@@ -42,11 +42,22 @@ const equalsBtn = document.querySelector(".equals");
 const deleteBtn = document.querySelector(".delete");
 const clearEverythingBtn = document.querySelector(".clear-everything");
 const clearInputBtn = document.querySelector(".clear-input");
+const allBtns = document.querySelectorAll("button");
 let display = document.querySelector(".display");
 
 
 let displayValue = display.textContent;
 let clearedDisplay = true;
+
+for (let i = 0; i < allBtns.length; i++) {
+    let originalFilter = allBtns[i].style.filter;
+    allBtns[i].addEventListener('click', () => {
+        allBtns[i].style.filter = "brightness(250%)";
+        setTimeout(() => {
+            allBtns[i].style.filter = originalFilter;
+        }, 50)
+    })
+}
 
 function clearDisplayValue() {
     clearedDisplay = true;
@@ -63,9 +74,9 @@ function clearButtons() {
 
 function removeLastInput() {
     deleteBtn.addEventListener('click', () => {
-        if (display.textContent === '0') {
+        if (display.textContent === '0' || display.textContent.length <= 1) {
             clearedDisplay = true;
-            return display.textContent = '0';
+            return displayValue = display.textContent = '0';
         } else {
             displayValue = display.textContent = display.textContent.slice(0, -1);
         }
@@ -77,7 +88,7 @@ function digitPressed() {
         digitBtns[i].addEventListener('click', () => {
             displayValue = display.textContent += digitBtns[i].textContent;
             if (clearedDisplay === true) {
-                display.textContent = "";
+                displayValue = display.textContent = "";
                 displayValue = display.textContent += digitBtns[i].textContent;
             }
             clearedDisplay = false;
@@ -86,12 +97,37 @@ function digitPressed() {
     }
 }
 
+function createElement(elementClassName, content) {
+    let element = document.createElement("div");
+    element.classList.add(elementClassName);
+    let elementText = document.createTextNode(content);
+    element.append(elementText);
+    document.insertBefore(element, display);
+    
+}
+
+function operatorPressed() {
+    divideBtn.addEventListener('click', () => {
+        createElement("divisor", "hi test");
+    })
+    multiplyBtn.addEventListener('click', () => {
+
+    })
+    subtractBtn.addEventListener('click', () => {
+
+    })
+    addBtn.addEventListener('click', () => {
+
+    })
+}
+
 
 
 function startCalculator() {
+    digitPressed();
     removeLastInput();
     clearButtons();
-    digitPressed();
+    operatorPressed();
 }
 
 startCalculator();

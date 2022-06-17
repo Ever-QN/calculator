@@ -12,6 +12,7 @@ body {
 
 .display {
     display: flex;
+    word-break: break-all;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
