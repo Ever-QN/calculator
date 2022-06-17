@@ -11,8 +11,9 @@ body {
 }
 
 .display {
+    min-width: 0;
     display: flex;
-    word-break: break-all;
+    /* word-break: break-all; */
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;

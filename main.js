@@ -152,6 +152,11 @@ function processEquation () {
         
 }
 
+function checkOverflowError() {
+    if (display.textContent === 'Overflow!') return clearDisplayValue(); 
+    if (display.textContent.length > 20) return display.textContent = 'Overflow!';
+}
+
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -176,6 +181,7 @@ function operatorPressed() {
     equalsBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
         processEquation();
+        checkOverflowError();
     })
 }
 
