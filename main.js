@@ -173,6 +173,18 @@ function addDecimal() {
     })
 }
 
+function switchSigns() {
+    oppositeIntegerBtn.addEventListener('click', () => {
+        if (display.textContent.includes("-")) {
+            display.textContent = display.textContent.substring(1);
+            return displayValue = display.textContent;
+        } else {
+        display.textContent = "-" + display.textContent;
+        return displayValue = display.textContent;
+        }
+    })
+}
+
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -214,13 +226,13 @@ function operatorPressed() {
     })
 }
 
-
 function startCalculator() {
     digitPressed();
     removeLastInput();
     clearButtons();
     operatorPressed();
     addDecimal();
+    switchSigns();
 }
 
 startCalculator();
