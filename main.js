@@ -165,35 +165,35 @@ function checkOverflowError() {
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'division';
         if (equationBeingProcessed === true) {
             return false;
         }
-        storedOperation = 'division';
         processEquation();
     })
     multiplyBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'multiplication';
         if (equationBeingProcessed === true) {
             return false;
         }
-        storedOperation = 'multiplication';
         processEquation();
         
     })
     subtractBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'subtraction';
         if (equationBeingProcessed === true) {
             return false;
         }
-        storedOperation = 'subtraction';
         processEquation();
     })
     addBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        storedOperation = 'addition';
         if (equationBeingProcessed === true) {
             return false;
         }
-        storedOperation = 'addition';
         processEquation();
     })
     equalsBtn.addEventListener('click', () => {
