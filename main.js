@@ -175,6 +175,7 @@ function checkOverflowError() {
 
 function addDecimal() {
     decimalBtn.addEventListener('click', () => {
+        clearedDisplay = false;
         display.textContent += ".";
         return displayValue = display.textContent;
     })
