@@ -71,6 +71,7 @@ for (let i = 0; i < allBtns.length; i++) {
 }
 
 function clearDisplayValue() {
+    equationBeingProcessed = false;
     clearedDisplay = true;
     display.textContent = "0";
     return displayValue = display.textContent;
