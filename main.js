@@ -68,7 +68,12 @@ function clearDisplayValue() {
 
 function clearButtons() {
     clearEverythingBtn.addEventListener('click', () => {
-        displayValue = 0;
+        clearDisplayValue();
+        firstInput = undefined;
+        secondInput = undefined;
+        result = undefined;
+        storedOperation = undefined;
+        equationBeingProcessed = false;
     })
     clearInputBtn.addEventListener('click', () => clearDisplayValue());
 }
@@ -133,18 +138,18 @@ function processEquation () {
             clearDisplayValue();
         } else if (firstInput != undefined && secondInput === undefined) {
             secondInput = displayValue;
-            result = display.textContent = operate(storedOperation, firstInput, secondInput);
+            result = display.textContent = operate(storedOperation, +firstInput, +secondInput);
             displayValue = result;
             firstInput = result;
             clearedDisplay = true; // Technically cleared, new input allows for ease of access for inputs, replaces previous number instead of adding on to the next string
         } else if (firstInput != undefined && secondInput != undefined && firstInput === displayValue) {
-            result = display.textContent = operate(storedOperation, displayValue, secondInput);
+            result = display.textContent = operate(storedOperation, +displayValue, +secondInput);
             displayValue = result;
             firstInput = result;
             clearedDisplay = true
         } else {
             secondInput = displayValue;
-            result = display.textContent = operate(storedOperation, firstInput, secondInput);
+            result = display.textContent = operate(storedOperation, +firstInput, +secondInput);
             displayValue = result;
             firstInput = result;
             clearedDisplay = true; // Technically cleared, new input allows for ease of access for inputs, replaces previous number instead of adding on to the next string
@@ -153,8 +158,8 @@ function processEquation () {
 }
 
 function checkOverflowError() {
-    if (display.textContent === 'Overflow!') return clearDisplayValue(); 
-    if (display.textContent.length > 20) return display.textContent = 'Overflow!';
+    if (display.textContent === 'Overflow!') return 0; 
+    if (display.textContent.includes("e") === true  || display.textContent.length > 20) return display.textContent = 'Overflow!';
 }
 
 function operatorPressed() {
@@ -168,15 +173,28 @@ function operatorPressed() {
     })
     multiplyBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        if (equationBeingProcessed === true) {
+            return false;
+        }
         storedOperation = 'multiplication';
+        processEquation();
+        
     })
     subtractBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        if (equationBeingProcessed === true) {
+            return false;
+        }
         storedOperation = 'subtraction';
+        processEquation();
     })
     addBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        if (equationBeingProcessed === true) {
+            return false;
+        }
         storedOperation = 'addition';
+        processEquation();
     })
     equalsBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
