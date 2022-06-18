@@ -44,12 +44,16 @@ const deleteBtn = document.querySelector(".delete");
 const clearEverythingBtn = document.querySelector(".clear-everything");
 const clearInputBtn = document.querySelector(".clear-input");
 const allBtns = document.querySelectorAll("button");
+const decimalBtn = document.querySelector(".decimal");
+const oppositeIntegerBtn = document.querySelector(".switch-sign"); 
 let display = document.querySelector(".display");
 
 
 let displayValue = display.textContent;
 let clearedDisplay = true;
 
+
+// The for loop below highlights the buttons on hover
 for (let i = 0; i < allBtns.length; i++) {
     let originalFilter = allBtns[i].style.filter;
     allBtns[i].addEventListener('click', () => {
@@ -162,6 +166,13 @@ function checkOverflowError() {
     if (display.textContent.includes("e") === true  || display.textContent.length > 20) return display.textContent = 'Overflow!';
 }
 
+function addDecimal() {
+    decimalBtn.addEventListener('click', () => {
+        display.textContent += ".";
+        return displayValue = display.textContent;
+    })
+}
+
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -209,6 +220,7 @@ function startCalculator() {
     removeLastInput();
     clearButtons();
     operatorPressed();
+    addDecimal();
 }
 
 startCalculator();
