@@ -1,3 +1,5 @@
+// MADE BY QUYNH NGO LINK TO MY PROJECT: https://github.com/Ever-QN/calculator
+
 function add(a, b) {
     return a + b;
 }
@@ -46,6 +48,10 @@ const clearInputBtn = document.querySelector(".clear-input");
 const allBtns = document.querySelectorAll("button");
 const decimalBtn = document.querySelector(".decimal");
 const oppositeIntegerBtn = document.querySelector(".switch-sign"); 
+const percentageBtn = document.querySelector(".percentage");
+const inverseBtn = document.querySelector(".inverse");
+const squareBtn = document.querySelector(".square");
+const sqrtBtn = document.querySelector(".sqrt");
 let display = document.querySelector(".display");
 
 
@@ -185,6 +191,11 @@ function switchSigns() {
     })
 }
 
+//greenBtns() does not include the CE and C buttons, those are in a different function
+function greenBtns() {
+
+}
+
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -233,6 +244,9 @@ function startCalculator() {
     operatorPressed();
     addDecimal();
     switchSigns();
+    greenBtns();
 }
 
 startCalculator();
+
+// MADE BY QUYNH NGO LINK TO MY PROJECT: https://github.com/Ever-QN/calculator
