@@ -204,6 +204,18 @@ function greenBtns() {
     })
 }
 
+function disableButtons() {
+    allBtns.forEach((button) => {
+        button.disabled = true;
+    })
+    clearAllBtn.disabled = false;
+    clearAllBtn.addEventListener('click', () => 
+    allBtns.forEach((button) => {
+        button.disabled = false;
+    })
+    )
+}
+
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -242,7 +254,10 @@ function operatorPressed() {
         // showInputHistory('divisor', 'hello world!');
         processEquation();
         checkOverflowError();
-        if (displayValue === 'Cannot divide by 0') display.textContent = displayValue;
+        if (displayValue === 'Cannot divide by 0') {
+        display.textContent = displayValue;
+        disableButtons();
+        }
     })
 }
 

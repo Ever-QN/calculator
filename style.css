@@ -43,6 +43,11 @@ button {
     font-size: large;
 }
 
+button:disabled {
+    pointer-events: none;
+    filter: brightness(50%);
+}
+
 button:hover {
     filter: brightness(150%);
 }
@@ -52,7 +57,7 @@ button:hover {
     background-color: rgb(20, 20, 20);
 }
 
-.percentage, .clear-input, .clear-everything, .inverse, .sqrt, .square {
+.percentage, .clear-all, .clear-entry, .inverse, .sqrt, .square {
     color:green;
     background-color: rgb(20, 20, 20);
 }
@@ -61,6 +66,6 @@ button:hover {
     background-color: rgb(20, 84, 129);
 }
 
-.buttons .digit {
 
-}
+
+/* MADE BY QUYNH NGO LINK TO MY PROJECT: https://github.com/Ever-QN/calculator */
