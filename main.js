@@ -111,6 +111,7 @@ function digitSpaceCheck() {
 
 function digitPressed() {
     for (let i = 0; i < digitBtns.length; i++) {
+        keyboardEventHandler();
         digitBtns[i].addEventListener('click', () => {
             displayValue = display.textContent += digitBtns[i].textContent;
             if (clearedDisplay === true) {
@@ -120,22 +121,56 @@ function digitPressed() {
             clearedDisplay = false;
             digitSpaceCheck();
         })
+    }
+}
+
+// Keyboard functionality event here
+function keyboardEventHandler() {
+    document.onkeyup = function(e) {
+        if (clearedDisplay === true) {
+            clearedDisplay = false;
+            displayValue = display.textContent = "";
+            switch (e.key) {
+                case '1': displayValue = display.textContent += e.key;
+                break;
+                case '2': displayValue = display.textContent += e.key; 
+                break;
+                case '3': displayValue = display.textContent += e.key; 
+                break;
+                case '4': displayValue = display.textContent += e.key; 
+                break;
+                case '5': displayValue = display.textContent += e.key; 
+                break;
+                case '6': displayValue = display.textContent += e.key; 
+                break;
+                case '7': displayValue = display.textContent += e.key; 
+                break;
+                case '8': displayValue = display.textContent += e.key; 
+                break;
+                case '9': displayValue = display.textContent += e.key; 
+                break;
+                case '0': displayValue = display.textContent += e.key; 
+            }
+        } else {
+            
+        }
         
     }
 }
 
-function showInputHistory(elementClassName, content) {
-    let element = document.createElement("div");
-    element.classList.add(elementClassName);
-    element.classList.add('prevInput');
-    let elementText = document.createTextNode(content);
-    element.appendChild(elementText);
-    element.style.color = 'grey';
-    element.style.display = 'flex';
-    element.style.justifyContent = 'flex-end';
-    element.style.padding = '7px';
-    container.insertBefore(element, display);
-}
+// Abandoned concept, maybe come back to this in the future
+// function showInputHistory(elementClassName, content) {
+//     let element = document.createElement("div");
+//     element.classList.add(elementClassName);
+//     element.classList.add('prevInput');
+//     let elementText = document.createTextNode(content);
+//     element.appendChild(elementText);
+//     element.style.color = 'grey';
+//     element.style.display = 'flex';
+//     element.style.justifyContent = 'flex-end';
+//     element.style.padding = '7px';
+//     container.insertBefore(element, display);
+// }
 
 let firstInput;
 let secondInput;
