@@ -171,8 +171,12 @@ function processEquation () {
 }
 
 function checkOverflowError() {
-    if (display.textContent.includes("e") === true  || display.textContent.length > 20) return display.textContent = 'Overflow!';
-    else if (display.textContent === 'Overflow!') return false; 
+    if (display.textContent.includes("e") === true || display.textContent.length > 20) {
+        display.textContent = 'Overflow!';
+        disableButtons();
+    }
+    else if (display.textContent === 'Overflow!')
+    return false; 
 }
 
 function addDecimal() {
