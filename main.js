@@ -26,7 +26,7 @@ function operate(operator, firstNumber, secondNumber) {
             return multiply(firstNumber, secondNumber);
         case 'division':
             if (secondNumber === 0) {
-                return "Cannot divide by zero";
+                return "Cannot divide by 0";
             }
             return divide(firstNumber, secondNumber);
         default:
@@ -43,8 +43,8 @@ const subtractBtn = document.querySelector(".subtract");
 const addBtn = document.querySelector(".add");
 const equalsBtn = document.querySelector(".equals");
 const deleteBtn = document.querySelector(".delete");
-const clearEverythingBtn = document.querySelector(".clear-everything");
-const clearInputBtn = document.querySelector(".clear-input");
+const clearEntryBtn = document.querySelector(".clear-entry");
+const clearAllBtn = document.querySelector(".clear-all");
 const allBtns = document.querySelectorAll("button");
 const decimalBtn = document.querySelector(".decimal");
 const oppositeIntegerBtn = document.querySelector(".switch-sign"); 
@@ -78,15 +78,17 @@ function clearDisplayValue() {
 }
 
 function clearButtons() {
-    clearEverythingBtn.addEventListener('click', () => {
+    clearEntryBtn.addEventListener('click', () => {
         clearDisplayValue();
-        firstInput = undefined;
-        secondInput = undefined;
-        result = undefined;
-        storedOperation = undefined;
-        equationBeingProcessed = false;
     })
-    clearInputBtn.addEventListener('click', () => clearDisplayValue());
+    clearAllBtn.addEventListener('click', () => { clearDisplayValue()
+    firstInput = undefined;
+    secondInput = undefined;
+    result = undefined;
+    storedOperation = undefined;
+    equationBeingProcessed = false;
+    });
+    
 }
 
 function removeLastInput() {
@@ -169,8 +171,8 @@ function processEquation () {
 }
 
 function checkOverflowError() {
-    if (display.textContent === 'Overflow!') return 0; 
     if (display.textContent.includes("e") === true  || display.textContent.length > 20) return display.textContent = 'Overflow!';
+    else if (display.textContent === 'Overflow!') return false; 
 }
 
 function addDecimal() {
@@ -195,7 +197,11 @@ function switchSigns() {
 
 //greenBtns() does not include the CE and C buttons, those are in a different function
 function greenBtns() {
-
+    percentageBtn.addEventListener('click', () => {
+        display.textContent = display.textContent / 100;
+        checkOverflowError();
+        return displayValue = display.textContent;
+    })
 }
 
 function operatorPressed() {
@@ -236,6 +242,7 @@ function operatorPressed() {
         // showInputHistory('divisor', 'hello world!');
         processEquation();
         checkOverflowError();
+        if (displayValue === 'Cannot divide by 0') display.textContent = displayValue;
     })
 }
 
@@ -252,3 +259,5 @@ function startCalculator() {
 startCalculator();
 
 // MADE BY QUYNH NGO LINK TO MY PROJECT: https://github.com/Ever-QN/calculator
+
+//On a side note, I don't think I'll ever do input history for this project. Maybe I will, but I'll leave the remaining code for future me just incase I do decide to do so. -Quynh June 18, 2022
