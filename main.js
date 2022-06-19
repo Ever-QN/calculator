@@ -171,12 +171,14 @@ function processEquation () {
 }
 
 function checkOverflowError() {
-    if (display.textContent.includes("e") === true || display.textContent.length > 20) {
+    if (isNaN(parseInt(display.textContent))) {
+        display.textContent = 'Does not exist!';
+        disableButtons();
+    }
+    else if (display.textContent.includes("e") === true || display.textContent.length > 20) {
         display.textContent = 'Overflow!';
         disableButtons();
     }
-    else if (display.textContent === 'Overflow!')
-    return false; 
 }
 
 function addDecimal() {
@@ -203,6 +205,21 @@ function switchSigns() {
 function greenBtns() {
     percentageBtn.addEventListener('click', () => {
         display.textContent = display.textContent / 100;
+        checkOverflowError();
+        return displayValue = display.textContent;
+    })
+    inverseBtn.addEventListener('click', () => {
+        display.textContent = 1 / display.textContent;
+        checkOverflowError();
+        return displayValue = display.textContent;
+    })
+    sqrtBtn.addEventListener('click', () => {
+        display.textContent = Math.sqrt(display.textContent);
+        checkOverflowError();
+        return displayValue = display.textContent;
+    })
+    squareBtn.addEventListener('click', () => {
+        display.textContent = Math.pow(display.textContent, 2);
         checkOverflowError();
         return displayValue = display.textContent;
     })
