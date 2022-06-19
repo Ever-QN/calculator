@@ -72,6 +72,96 @@ for (let i = 0; i < allBtns.length; i++) {
     })
 }
 
+function keyboardEventHandler() {
+    digitBtns.forEach((button) => {
+        document.onkeyup = function(e) {
+            if (clearedDisplay === true) {
+                displayValue = display.textContent = "";
+                clearedDisplay = false;
+                switch (e.key) {
+                    case '1':
+                        displayValue = display.textContent += e.key
+                    break;
+                    case '2': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '3': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '4': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '5': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '6': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '7': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '8': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '9': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '0': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '.':
+                        display.textContent = '0' + e.key;
+                        displayValue = display.textContent;
+                    break;
+                    
+                }
+            } else if (clearedDisplay === false) {
+                switch (e.key) {
+                    case '1': 
+                        displayValue = display.textContent += e.key;
+                    break;
+                    case '2': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '3': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '4': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '5': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '6': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '7': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '8': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '9': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '0': 
+                        displayValue = display.textContent += e.key; 
+                    break;
+                    case '.':
+                        displayValue = display.textContent += e.key;
+                    break;
+                }
+                checkOverflowError();
+            } else {
+                return 0;
+            }
+            
+        }
+    })
+}
+
+keyboardEventHandler();
+
 function clearDisplayValue() {
     equationBeingProcessed = false;
     clearedDisplay = true;
@@ -127,63 +217,7 @@ function digitPressed() {
 }
 
 // Keyboard functionality event here
-function keyboardEventHandler() {
-    document.onkeyup = function(e) {
-        if (clearedDisplay === true) {
-            displayValue = display.textContent = "";
-            clearedDisplay = false;
-            switch (e.key) {
-                case '1': displayValue = display.textContent += e.key;
-                break;
-                case '2': displayValue = display.textContent += e.key; 
-                break;
-                case '3': displayValue = display.textContent += e.key; 
-                break;
-                case '4': displayValue = display.textContent += e.key; 
-                break;
-                case '5': displayValue = display.textContent += e.key; 
-                break;
-                case '6': displayValue = display.textContent += e.key; 
-                break;
-                case '7': displayValue = display.textContent += e.key; 
-                break;
-                case '8': displayValue = display.textContent += e.key; 
-                break;
-                case '9': displayValue = display.textContent += e.key; 
-                break;
-                case '0': displayValue = display.textContent += e.key; 
-                break;
-            }
-        } else if (clearedDisplay === false) {
-            switch (e.key) {
-                case '1': displayValue = display.textContent += e.key;
-                break;
-                case '2': displayValue = display.textContent += e.key; 
-                break;
-                case '3': displayValue = display.textContent += e.key; 
-                break;
-                case '4': displayValue = display.textContent += e.key; 
-                break;
-                case '5': displayValue = display.textContent += e.key; 
-                break;
-                case '6': displayValue = display.textContent += e.key; 
-                break;
-                case '7': displayValue = display.textContent += e.key; 
-                break;
-                case '8': displayValue = display.textContent += e.key; 
-                break;
-                case '9': displayValue = display.textContent += e.key; 
-                break;
-                case '0': displayValue = display.textContent += e.key; 
-                break;
-            }
-            checkOverflowError();
-        } else {
-            return 0;
-        }
-        
-    }
-}
+
 
 // Abandoned concept, maybe come back to this in the future
 // function showInputHistory(elementClassName, content) {
