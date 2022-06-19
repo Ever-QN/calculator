@@ -59,7 +59,9 @@ let displayValue = display.textContent;
 let clearedDisplay = true;
 
 
-// The for loop below highlights the buttons on hover
+// The function/loop below highlights the buttons on hover and click
+
+
 for (let i = 0; i < allBtns.length; i++) {
     let originalFilter = allBtns[i].style.filter;
     allBtns[i].addEventListener('click', () => {
@@ -128,8 +130,8 @@ function digitPressed() {
 function keyboardEventHandler() {
     document.onkeyup = function(e) {
         if (clearedDisplay === true) {
-            clearedDisplay = false;
             displayValue = display.textContent = "";
+            clearedDisplay = false;
             switch (e.key) {
                 case '1': displayValue = display.textContent += e.key;
                 break;
@@ -150,9 +152,34 @@ function keyboardEventHandler() {
                 case '9': displayValue = display.textContent += e.key; 
                 break;
                 case '0': displayValue = display.textContent += e.key; 
+                break;
             }
+        } else if (clearedDisplay === false) {
+            switch (e.key) {
+                case '1': displayValue = display.textContent += e.key;
+                break;
+                case '2': displayValue = display.textContent += e.key; 
+                break;
+                case '3': displayValue = display.textContent += e.key; 
+                break;
+                case '4': displayValue = display.textContent += e.key; 
+                break;
+                case '5': displayValue = display.textContent += e.key; 
+                break;
+                case '6': displayValue = display.textContent += e.key; 
+                break;
+                case '7': displayValue = display.textContent += e.key; 
+                break;
+                case '8': displayValue = display.textContent += e.key; 
+                break;
+                case '9': displayValue = display.textContent += e.key; 
+                break;
+                case '0': displayValue = display.textContent += e.key; 
+                break;
+            }
+            checkOverflowError();
         } else {
-            
+            return 0;
         }
         
     }
