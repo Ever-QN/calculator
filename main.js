@@ -331,6 +331,7 @@ function disableButtons() {
 function operatorPressed() {
     divideBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        processEquation();
         storedOperation = 'division';
         if (equationBeingProcessed === true) {
             return false;
@@ -339,6 +340,7 @@ function operatorPressed() {
     })
     multiplyBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        processEquation();
         storedOperation = 'multiplication';
         if (equationBeingProcessed === true) {
             return false;
@@ -348,6 +350,7 @@ function operatorPressed() {
     })
     subtractBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        processEquation();
         storedOperation = 'subtraction';
         if (equationBeingProcessed === true) {
             return false;
@@ -356,6 +359,7 @@ function operatorPressed() {
     })
     addBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
+        processEquation();
         storedOperation = 'addition';
         if (equationBeingProcessed === true) {
             return false;
