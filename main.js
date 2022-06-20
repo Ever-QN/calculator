@@ -70,6 +70,13 @@ for (let i = 0; i < allBtns.length; i++) {
     })
 }
 
+// This iteration below prevents the buttons from being focused, supposed to complement keyboard users who use the enter key so they dont press a highlighted button twice
+allBtns.forEach((button) => {
+    button.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+    })
+})
+
 // Keyboard functionality event here
 function keyboardEventHandler() {
     digitBtns.forEach((button) => {
@@ -85,7 +92,7 @@ function keyboardEventHandler() {
             } else if (e.key === ".") {
                 displayValue = display.textContent += e.key;
             }
-            if (e.key === "Enter")  {
+            if (e.key === "Enter" && storedOperation != undefined)  {
                 processEquation();
                 checkOverflowError();
                 if (displayValue === 'Cannot divide by 0') {
