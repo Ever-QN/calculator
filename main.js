@@ -113,7 +113,7 @@ function keyboardEventHandler() {
                 }
                 storedOperation = "division";
                 processEquation();
-            } else if (YEAH) {
+            } else if (e.key === "*") {
                 if (equationBeingProcessed === true) {
                     return false;
                 }
@@ -125,7 +125,7 @@ function keyboardEventHandler() {
                 }
                 storedOperation = "subtraction";
                 processEquation();
-            } else if (YEAH) {
+            } else if (e.key === "+") {
                 if (equationBeingProcessed === true) {
                     return false;
                 }
