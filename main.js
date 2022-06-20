@@ -375,4 +375,4 @@ startCalculator();
 
 // MADE BY QUYNH NGO LINK TO MY PROJECT: https://github.com/Ever-QN/calculator
 
-//On a side note, I don't think I'll ever do input history for this project. Maybe I will, but I'll leave the remaining code for future me just incase I do decide to do so. -Quynh June 18, 2022
+// On a side note, I don't think I'll ever do input history appending for this project. Maybe I will, but I'll leave the remaining code for future me just incase I do decide to do so. -Quynh June 18, 2022
