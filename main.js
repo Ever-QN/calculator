@@ -339,8 +339,7 @@ function operatorPressed() {
         storedOperation = 'division';
         if (equationBeingProcessed === true) {
             return false;
-        }
-        processEquation();
+        } 
     })
     multiplyBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -349,8 +348,6 @@ function operatorPressed() {
         if (equationBeingProcessed === true) {
             return false;
         }
-        processEquation();
-        
     })
     subtractBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -359,7 +356,6 @@ function operatorPressed() {
         if (equationBeingProcessed === true) {
             return false;
         }
-        processEquation();
     })
     addBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
@@ -368,7 +364,6 @@ function operatorPressed() {
         if (equationBeingProcessed === true) {
             return false;
         }
-        processEquation();
     })
     equalsBtn.addEventListener('click', () => {
         // showInputHistory('divisor', 'hello world!');
