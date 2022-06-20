@@ -4,10 +4,10 @@ Mostly finished, I originally wanted to add input history on to this calculator 
 
 Keyboard controls:
 
-/ = divide
-* = multiply
-+ = add
-- = subtract
-% = get the percentage of
-Escape/esc = clear all values
-Backspace = remove last digit in the display
+"/" = divide
+"*" = multiply
+"+" = add
+"-" = subtract
+"%" = get the percentage of
+"Escape/esc" = clear all values
+"Backspace" = remove last digit in the display
