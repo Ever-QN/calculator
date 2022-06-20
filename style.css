@@ -8,6 +8,32 @@ body {
     max-width: 400px;
     min-width: 400px;
     margin-top: 40px;
+    border-radius: 10px;
+}
+
+.body {
+    
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.footer a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.footer a:hover {
+    font-size: 25px;
+    transition: font-size 0.5s;
 }
 
 .display {
@@ -38,7 +64,7 @@ button {
     color: white;
     background-color: rgb(18, 18, 18);
     border-color: rgb(25, 25, 25);
-    /* border-radius: 8px; */
+    border-radius: 5px;
     border-style: double;
     font-size: large;
 }
