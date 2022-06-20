@@ -78,6 +78,15 @@ allBtns.forEach((button) => {
 })
 
 // Keyboard functionality event here
+
+let keysPressed = {};
+document.addEventListener('keydown', (event) => {
+   keysPressed[event.key] = true;
+});
+document.addEventListener('keyup', (event) => {
+    delete this.keysPressed[event.key];
+ });
+
 function keyboardEventHandler() {
     digitBtns.forEach((button) => {
         document.onkeyup = function(e) {
@@ -91,14 +100,37 @@ function keyboardEventHandler() {
                 checkOverflowError();
             } else if (e.key === ".") {
                 displayValue = display.textContent += e.key;
-            }
-            if (e.key === "Enter" && storedOperation != undefined)  {
+            } else if (e.key === "Enter" && storedOperation != undefined)  {
                 processEquation();
                 checkOverflowError();
-                if (displayValue === 'Cannot divide by 0') {
+                if (displayValue === "Cannot divide by 0") {
                     display.textContent = displayValue;
                     disableButtons();
                 }
+            } else if (e.key === "/") {
+                if (equationBeingProcessed === true) {
+                    return false;
+                }
+                storedOperation = "division";
+                processEquation();
+            } else if (YEAH) {
+                if (equationBeingProcessed === true) {
+                    return false;
+                }
+                storedOperation = "multiplication";
+                processEquation();
+            } else if (e.key === "-") {
+                if (equationBeingProcessed === true) {
+                    return false;
+                }
+                storedOperation = "subtraction";
+                processEquation();
+            } else if (YEAH) {
+                if (equationBeingProcessed === true) {
+                    return false;
+                }
+                storedOperation = "addition";
+                processEquation();
             }
         }
     })
