@@ -60,8 +60,6 @@ let clearedDisplay = true;
 
 
 // The function/loop below highlights the buttons on hover and click
-
-
 for (let i = 0; i < allBtns.length; i++) {
     let originalFilter = allBtns[i].style.filter;
     allBtns[i].addEventListener('click', () => {
@@ -72,90 +70,29 @@ for (let i = 0; i < allBtns.length; i++) {
     })
 }
 
+// Keyboard functionality event here
 function keyboardEventHandler() {
     digitBtns.forEach((button) => {
         document.onkeyup = function(e) {
-            if (clearedDisplay === true) {
+            if (display.textContent === "Overflow!" || display.textContent === "Does not exist!" ) return false;
+            if (clearedDisplay === true && isFinite(parseFloat(e.key))) {
                 displayValue = display.textContent = "";
                 clearedDisplay = false;
-                switch (e.key) {
-                    case '1':
-                        displayValue = display.textContent += e.key
-                    break;
-                    case '2': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '3': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '4': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '5': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '6': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '7': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '8': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '9': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '0': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '.':
-                        display.textContent = '0' + e.key;
-                        displayValue = display.textContent;
-                    break;
-                    
-                }
-            } else if (clearedDisplay === false) {
-                switch (e.key) {
-                    case '1': 
-                        displayValue = display.textContent += e.key;
-                    break;
-                    case '2': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '3': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '4': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '5': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '6': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '7': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '8': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '9': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '0': 
-                        displayValue = display.textContent += e.key; 
-                    break;
-                    case '.':
-                        displayValue = display.textContent += e.key;
-                    break;
-                }
+                    displayValue = display.textContent += e.key;
+            } else if (clearedDisplay === false && isFinite(parseFloat(e.key))) {
+                displayValue = display.textContent += e.key;
                 checkOverflowError();
-            } else {
-                return 0;
+            } else if (e.key === ".") {
+                displayValue = display.textContent += e.key;
             }
-            
+            if (e.key === "Enter")  {
+                processEquation();
+                checkOverflowError();
+                if (displayValue === 'Cannot divide by 0') {
+                    display.textContent = displayValue;
+                    disableButtons();
+                }
+            }
         }
     })
 }
@@ -216,9 +153,6 @@ function digitPressed() {
     }
 }
 
-// Keyboard functionality event here
-
-
 // Abandoned concept, maybe come back to this in the future
 // function showInputHistory(elementClassName, content) {
 //     let element = document.createElement("div");
@@ -240,7 +174,6 @@ let storedOperation;
 let equationBeingProcessed = false;
 
 function processEquation () {
-    
     equationBeingProcessed = true;
         if (firstInput === undefined) {
             firstInput = displayValue;
