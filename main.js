@@ -117,28 +117,32 @@ function keyboardEventHandler() {
                 disableButtons();
             }
         } else if (e.key === "/") {
+            processEquation();
+            storedOperation = "division";
             if (equationBeingProcessed === true) {
                 return false;
             }
-            storedOperation = "division";
             processEquation();
         } else if (e.key === "*") {
+            processEquation();
+            storedOperation = "multiplication";
             if (equationBeingProcessed === true) {
                 return false;
             }
-            storedOperation = "multiplication";
             processEquation();
         } else if (e.key === "-") {
+            processEquation();
+            storedOperation = "subtraction";
             if (equationBeingProcessed === true) {
                 return false;
             }
-            storedOperation = "subtraction";
             processEquation();
         } else if (e.key === "+") {
+            processEquation();
+            storedOperation = "addition"
             if (equationBeingProcessed === true) {
                 return false;
             }
-            storedOperation = "addition";
             processEquation();
         } else if (e.key === "%") {
             checkOverflowError();
