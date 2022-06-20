@@ -118,24 +118,28 @@ function keyboardEventHandler() {
             }
         } else if (e.key === "/") {
             processEquation();
+            checkOverflowError();
             storedOperation = "division";
             if (equationBeingProcessed === true) {
                 return false;
             }
         } else if (e.key === "*") {
             processEquation();
+            checkOverflowError();
             storedOperation = "multiplication";
             if (equationBeingProcessed === true) {
                 return false;
             }
         } else if (e.key === "-") {
             processEquation();
+            checkOverflowError();
             storedOperation = "subtraction";
             if (equationBeingProcessed === true) {
                 return false;
             }
         } else if (e.key === "+") {
             processEquation();
+            checkOverflowError();
             storedOperation = "addition"
             if (equationBeingProcessed === true) {
                 return false;
