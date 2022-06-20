@@ -1,7 +1,13 @@
 # calculator
 
-Currently work in progress, most things at the moment are working except for the green buttons (CE and C work though).
+Mostly finished, I originally wanted to add input history on to this calculator but I figured I'd do that in my spare time once I'm finished with other things.
 
-Keyboard functionality will be added soon.
+Keyboard controls:
 
-My final vanilla JS project which consists of everything I have learned since November 2021 (The date is currently June 2022 as of writing this, roughly 8 months of knowledge)
+/ = divide
+* = multiply
++ = add
+- = subtract
+% = get the percentage of
+Escape/esc = clear all values
+Backspace = remove last digit in the display

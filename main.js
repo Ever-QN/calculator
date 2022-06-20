@@ -78,62 +78,73 @@ allBtns.forEach((button) => {
 })
 
 // Keyboard functionality event here
-
-let keysPressed = {};
-document.addEventListener('keydown', (event) => {
-   keysPressed[event.key] = true;
-});
-document.addEventListener('keyup', (event) => {
-    delete this.keysPressed[event.key];
- });
-
 function keyboardEventHandler() {
-    digitBtns.forEach((button) => {
-        document.onkeyup = function(e) {
-            if (display.textContent === "Overflow!" || display.textContent === "Does not exist!" ) return false;
-            if (clearedDisplay === true && isFinite(parseFloat(e.key))) {
-                displayValue = display.textContent = "";
-                clearedDisplay = false;
-                    displayValue = display.textContent += e.key;
-            } else if (clearedDisplay === false && isFinite(parseFloat(e.key))) {
+    document.onkeyup = function(e) {
+        if (display.textContent === "Overflow!" || display.textContent === "Does not exist!" ) return false;
+        if (clearedDisplay === true && isFinite(parseFloat(e.key))) {
+            displayValue = display.textContent = "";
+            clearedDisplay = false;
                 displayValue = display.textContent += e.key;
-                checkOverflowError();
-            } else if (e.key === ".") {
-                displayValue = display.textContent += e.key;
-            } else if (e.key === "Enter" && storedOperation != undefined)  {
-                processEquation();
-                checkOverflowError();
-                if (displayValue === "Cannot divide by 0") {
-                    display.textContent = displayValue;
-                    disableButtons();
-                }
-            } else if (e.key === "/") {
-                if (equationBeingProcessed === true) {
-                    return false;
-                }
-                storedOperation = "division";
-                processEquation();
-            } else if (e.key === "*") {
-                if (equationBeingProcessed === true) {
-                    return false;
-                }
-                storedOperation = "multiplication";
-                processEquation();
-            } else if (e.key === "-") {
-                if (equationBeingProcessed === true) {
-                    return false;
-                }
-                storedOperation = "subtraction";
-                processEquation();
-            } else if (e.key === "+") {
-                if (equationBeingProcessed === true) {
-                    return false;
-                }
-                storedOperation = "addition";
-                processEquation();
+        } else if (clearedDisplay === false && isFinite(parseFloat(e.key))) {
+            displayValue = display.textContent += e.key;
+            checkOverflowError();
+        } else if (e.key === ".") {
+            displayValue = display.textContent += e.key;
+        } else if (e.key === "Enter" && storedOperation != undefined)  {
+            processEquation();
+            checkOverflowError();
+            if (displayValue === "Cannot divide by 0") {
+                display.textContent = displayValue;
+                disableButtons();
             }
+        } else if (e.key === "/") {
+            if (equationBeingProcessed === true) {
+                return false;
+            }
+            storedOperation = "division";
+            processEquation();
+        } else if (e.key === "*") {
+            if (equationBeingProcessed === true) {
+                return false;
+            }
+            storedOperation = "multiplication";
+            processEquation();
+        } else if (e.key === "-") {
+            if (equationBeingProcessed === true) {
+                return false;
+            }
+            storedOperation = "subtraction";
+            processEquation();
+        } else if (e.key === "+") {
+            if (equationBeingProcessed === true) {
+                return false;
+            }
+            storedOperation = "addition";
+            processEquation();
+        } else if (e.key === "%") {
+            checkOverflowError();
+            displayValue = display.textContent = display.textContent / 100;
+        } else if (e.key === "Backspace") {
+            removeLastInputKeyPress();
+        } else if (e.key === "Escape") {
+            clearDisplayValue()
+            firstInput = undefined;
+            secondInput = undefined;
+            result = undefined;
+            storedOperation = undefined;
+            equationBeingProcessed = false;
         }
-    })
+    }
+}
+
+
+function removeLastInputKeyPress() {
+    if (display.textContent === '0' || display.textContent.length <= 1) {
+        clearedDisplay = true;
+        return displayValue = display.textContent = '0';
+    } else {
+        displayValue = display.textContent = display.textContent.slice(0, -1);
+    }
 }
 
 keyboardEventHandler();
@@ -159,7 +170,7 @@ function clearButtons() {
     
 }
 
-function removeLastInput() {
+function removeLastInputClick() {
     deleteBtn.addEventListener('click', () => {
         if (display.textContent === '0' || display.textContent.length <= 1) {
             clearedDisplay = true;
@@ -352,7 +363,7 @@ function operatorPressed() {
 
 function startCalculator() {
     digitPressed();
-    removeLastInput();
+    removeLastInputClick();
     clearButtons();
     operatorPressed();
     addDecimal();
