@@ -122,28 +122,24 @@ function keyboardEventHandler() {
             if (equationBeingProcessed === true) {
                 return false;
             }
-            processEquation();
         } else if (e.key === "*") {
             processEquation();
             storedOperation = "multiplication";
             if (equationBeingProcessed === true) {
                 return false;
             }
-            processEquation();
         } else if (e.key === "-") {
             processEquation();
             storedOperation = "subtraction";
             if (equationBeingProcessed === true) {
                 return false;
             }
-            processEquation();
         } else if (e.key === "+") {
             processEquation();
             storedOperation = "addition"
             if (equationBeingProcessed === true) {
                 return false;
             }
-            processEquation();
         } else if (e.key === "%") {
             checkOverflowError();
             displayValue = display.textContent = display.textContent / 100;
