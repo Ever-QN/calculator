@@ -107,6 +107,7 @@ function keyboardEventHandler() {
             displayValue = display.textContent += e.key;
             checkOverflowError();
         } else if (e.key === ".") {
+            if (display.textContent.includes(".")) return false;
             displayValue = display.textContent += e.key;
         } else if (e.key === "Enter" && storedOperation != undefined)  {
             processEquation();
@@ -272,6 +273,7 @@ function checkOverflowError() {
 
 function addDecimal() {
     decimalBtn.addEventListener('click', () => {
+        if (display.textContent.includes(".")) return false;
         clearedDisplay = false;
         display.textContent += ".";
         return displayValue = display.textContent;
