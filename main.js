@@ -80,6 +80,24 @@ allBtns.forEach((button) => {
 // Keyboard functionality event here
 function keyboardEventHandler() {
     document.onkeyup = function(e) {
+        if (allBtns.disabled === true && e.key === 'Escape') {
+            clearDisplayValue();
+            firstInput = undefined;
+            secondInput = undefined;
+            result = undefined;
+            storedOperation = undefined;
+            equationBeingProcessed = false;
+        } else if (e.key === "Escape") {
+            allBtns.forEach((button) => {
+                button.disabled = false;
+            })
+            clearDisplayValue();
+            firstInput = undefined;
+            secondInput = undefined;
+            result = undefined;
+            storedOperation = undefined;
+            equationBeingProcessed = false;
+        } 
         if (display.textContent === "Overflow!" || display.textContent === "Does not exist!" ) return false;
         if (clearedDisplay === true && isFinite(parseFloat(e.key))) {
             displayValue = display.textContent = "";
@@ -126,13 +144,6 @@ function keyboardEventHandler() {
             displayValue = display.textContent = display.textContent / 100;
         } else if (e.key === "Backspace") {
             removeLastInputKeyPress();
-        } else if (e.key === "Escape") {
-            clearDisplayValue()
-            firstInput = undefined;
-            secondInput = undefined;
-            result = undefined;
-            storedOperation = undefined;
-            equationBeingProcessed = false;
         }
     }
 }
@@ -167,7 +178,6 @@ function clearButtons() {
     storedOperation = undefined;
     equationBeingProcessed = false;
     });
-    
 }
 
 function removeLastInputClick() {
