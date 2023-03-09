@@ -1,10 +1,15 @@
 # Calculator Project
 
-Mostly finished, I originally wanted to add input history on to this calculator but I figured I'd do that in my spare time once I'm finished with other things. <br />
+This is a simple calculator web application built with HTML, CSS, and JavaScript. The calculator allows users to perform basic mathematical operations such as addition, subtraction, multiplication, and division. The interface is designed to be user-friendly and intuitive, making it easy for users to enter numbers and operators and get quick results. Features keyboard support.
 
-A collection of all the skills I've learnt so far within my 7 months of learning HTML, CSS, and JS
+**Features**<br>
+-Addition, subtraction, multiplication, and division operations <br>
+-Decimal point input support <br>
+-Clear button for resetting the input field <br>
+-Responsive design for desktop and mobile devices <br>
 
-Keyboard controls: <br />
+
+**Keyboard controls:** <br />
 "/" = divide <br />
 "*" = multiply <br />
 "+" = add <br />
